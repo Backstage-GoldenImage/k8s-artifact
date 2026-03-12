@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/Backstsage-GoldenImage/k8s-artifact.git
+        repoURL: https://github.com/Backstage-GoldenImage/k8s-artifact.git
         revision: main
         directories:
           - path: apps/*
@@ -16,7 +16,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/Backstsage-GoldenImage/k8s-artifact.git
+        repoURL: https://github.com/Backstage-GoldenImage/k8s-artifact.git
         targetRevision: main
         path: '{{path}}'
       destination:
@@ -26,5 +26,6 @@ spec:
         automated:
           prune: true
           selfHeal: true
+
 
 
