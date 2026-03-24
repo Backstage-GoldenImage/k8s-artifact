@@ -1,37 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
-  name: backstage-services
-  namespace: default
+  name: backstage-service1
+  namespace: argocd
 spec:
-  generators:
-    - git:
-        repoURL: https://github.com/Backstage-GoldenImage/k8s-artifact.git
-        revision: main
-        directories:
-          - path: apps/*
-  template:
-    metadata:
-      name: '{{path.basename}}'
-    spec:
-      project: default
-      source:
-        repoURL: https://github.com/Backstage-GoldenImage/k8s-artifact.git
-        targetRevision: main
-        path: '{{path}}'
-      destination:
-        server: https://kubernetes.default.svc
-        namespace: default
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-      ignoreDifferences:
-        - group: argoproj.io
-          kind: Application
-          jsonPointers:
-            - /metadata/annotations
-
-
-
-
+  project: default
+  source:
+    repoURL: https://github.com/Backstage-GoldenImage/k8s-artifact.git
+    targetRevision: main
+    path: apps
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
