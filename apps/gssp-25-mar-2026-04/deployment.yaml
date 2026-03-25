@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gssp-25-mar-2026-04
+  labels:
+    backstage.io/kubernetes-id: gssp-25-mar-2026-04
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gssp-25-mar-2026-04
+  template:
+    metadata:
+      labels:
+        app: gssp-25-mar-2026-04
+        backstage.io/kubernetes-id: gssp-25-mar-2026-04
+    spec:
+      containers:
+        - name: gssp-25-mar-2026-04
+          image: chaitanyapandeygspann/gssp-25-mar-2026-04:1.0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
