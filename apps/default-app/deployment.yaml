@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: default-app
+  labels:
+    backstage.io/kubernetes-id: default-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: default-app
+  template:
+    metadata:
+      labels:
+        app: default-app
+        backstage.io/kubernetes-id: default-app
+    spec:
+      containers:
+        - name: default-app
+          image: chaitanyapandeygspann/default-app:1.0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
