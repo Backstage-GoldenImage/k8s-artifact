@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gssp-test-pr-9
+  labels:
+    backstage.io/kubernetes-id: gssp-test-pr-9
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gssp-test-pr-9
+  template:
+    metadata:
+      labels:
+        app: gssp-test-pr-9
+        backstage.io/kubernetes-id: gssp-test-pr-9
+    spec:
+      containers:
+        - name: gssp-test-pr-9
+          image: chaitanyapandeygspann/gssp-test-pr-9:1.0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
